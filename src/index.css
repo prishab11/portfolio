@@ -1,0 +1,104 @@
+@import "tailwindcss";
+
+@theme {
+  --color-navy-950: #070b16;
+  --color-navy-900: #0a0f1f;
+  --color-navy-850: #0d1326;
+  --color-navy-800: #121a36;
+  --color-navy-700: #1b264a;
+  --color-navy-600: #253564;
+  --color-pink-primary: #ff2d8a;
+  --color-pink-glow: #ff4396;
+  --color-pink-secondary: #ff6fb1;
+  --font-mono: "JetBrains Mono", monospace;
+  --font-sans: "Inter", sans-serif;
+}
+
+:root {
+  color-scheme: dark;
+}
+
+html {
+  scroll-behavior: smooth;
+  background-color: #0a0f1f;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  background-color: #0a0f1f;
+  color: #e2e8f0;
+  font-family: var(--font-sans);
+  overflow-x: hidden;
+  position: relative;
+}
+
+/* Subtle tech grid background */
+.bg-grid-pattern {
+  background-size: 40px 40px;
+  background-image: 
+    linear-gradient(to right, rgba(255, 255, 255, 0.02) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(255, 255, 255, 0.02) 1px, transparent 1px);
+}
+
+.bg-radial-vignette {
+  background: radial-gradient(circle at 50% 20%, rgba(255, 45, 138, 0.06) 0%, transparent 60%),
+              radial-gradient(circle at 80% 80%, rgba(37, 53, 100, 0.15) 0%, transparent 50%),
+              #0a0f1f;
+}
+
+/* Glassmorphism cards */
+.glass-panel {
+  background: rgba(13, 19, 38, 0.65);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  border: 1px solid rgba(255, 255, 255, 0.07);
+}
+
+.glass-panel-hover {
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.glass-panel-hover:hover {
+  border-color: rgba(255, 45, 138, 0.4);
+  box-shadow: 0 10px 30px -10px rgba(255, 45, 138, 0.18), 0 0 15px rgba(255, 45, 138, 0.08);
+  transform: translateY(-2px);
+}
+
+/* Terminal blink cursor */
+@keyframes blink {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0; }
+}
+
+.animate-blink {
+  animation: blink 1s step-end infinite;
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 7px;
+}
+
+::-webkit-scrollbar-track {
+  background: #0a0f1f;
+}
+
+::-webkit-scrollbar-thumb {
+  background: rgba(255, 45, 138, 0.3);
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(255, 45, 138, 0.7);
+}
+
+/* Reduced motion support */
+@media (prefers-reduced-motion: reduce) {
+  *, ::before, ::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
