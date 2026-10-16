@@ -67,29 +67,29 @@ function DroneModel({ scrollProgress, mousePos, isReducedMotion }) {
 
   // Materials
   const pinkWireMat = useMemo(() => new THREE.MeshBasicMaterial({
-    color: '#ff2d8a',
+    color: '#ff5a7a',
     wireframe: true,
   }), []);
 
   const pinkLineMat = useMemo(() => new THREE.LineBasicMaterial({
-    color: '#ff6fb1',
+    color: '#ff7895',
   }), []);
 
   const darkBodyMat = useMemo(() => new THREE.MeshStandardMaterial({
-    color: '#0d1326',
-    roughness: 0.3,
-    metalness: 0.8,
+    color: '#17080e',
+    roughness: 0.35,
+    metalness: 0.85,
   }), []);
 
   const accentPinkMat = useMemo(() => new THREE.MeshStandardMaterial({
-    color: '#ff2d8a',
-    emissive: '#ff2d8a',
-    emissiveIntensity: 0.6,
+    color: '#ff5a7a',
+    emissive: '#ff5a7a',
+    emissiveIntensity: 0.65,
     roughness: 0.2,
   }), []);
 
   const rotorBladeMat = useMemo(() => new THREE.MeshStandardMaterial({
-    color: '#ff6fb1',
+    color: '#ff7895',
     transparent: true,
     opacity: 0.85,
     roughness: 0.1,
@@ -234,7 +234,7 @@ function DroneModel({ scrollProgress, mousePos, isReducedMotion }) {
       <pointLight
         ref={ledRef}
         position={[0, 0.2, 0]}
-        color="#ff2d8a"
+        color="#ff5a7a"
         intensity={1.8}
         distance={5}
       />
@@ -246,11 +246,11 @@ function DroneModel({ scrollProgress, mousePos, isReducedMotion }) {
 function DroneFallback() {
   return (
     <div className="w-full h-full flex items-center justify-center p-8">
-      <div className="relative w-64 h-64 border border-pink-500/20 rounded-full flex items-center justify-center animate-pulse">
-        <div className="absolute inset-4 border border-pink-500/30 rounded-full" />
-        <div className="absolute inset-8 border border-pink-500/10 rounded-full" />
-        <svg viewBox="0 0 100 100" className="w-36 h-36 text-[#ff2d8a] stroke-current fill-none" strokeWidth="1.5">
-          <circle cx="50" cy="50" r="14" className="fill-[#ff2d8a]/20" />
+      <div className="relative w-64 h-64 border border-rose-500/25 rounded-full flex items-center justify-center animate-pulse">
+        <div className="absolute inset-4 border border-rose-500/35 rounded-full" />
+        <div className="absolute inset-8 border border-rose-500/15 rounded-full" />
+        <svg viewBox="0 0 100 100" className="w-36 h-36 text-[#ff5a7a] stroke-current fill-none" strokeWidth="1.5">
+          <circle cx="50" cy="50" r="14" className="fill-[#ff5a7a]/20" />
           <line x1="20" y1="20" x2="80" y2="80" />
           <line x1="20" y1="80" x2="80" y2="20" />
           <circle cx="20" cy="20" r="10" strokeDasharray="3 2" />
@@ -260,7 +260,7 @@ function DroneFallback() {
           <line x1="50" y1="36" x2="50" y2="64" />
           <line x1="36" y1="50" x2="64" y2="50" />
         </svg>
-        <span className="absolute bottom-4 font-mono text-[10px] text-pink-400/60 uppercase tracking-widest">
+        <span className="absolute bottom-4 font-mono text-[10px] text-rose-300/70 uppercase tracking-widest">
           SYS // TELEMETRY OK
         </span>
       </div>
@@ -331,11 +331,11 @@ export default function QuadcopterDrone() {
     >
       {/* Decorative cyber grid backdrop & crosshairs behind drone */}
       <div className="absolute inset-0 flex items-center justify-center pointer-events-none opacity-40">
-        <div className="w-72 h-72 rounded-full border border-pink-500/10 shadow-[0_0_50px_rgba(255,45,138,0.06)] animate-pulse" />
-        <div className="absolute w-88 h-88 rounded-full border border-dashed border-pink-500/15" />
+        <div className="w-72 h-72 rounded-full border border-rose-500/15 shadow-[0_0_50px_rgba(255,90,122,0.1)] animate-pulse" />
+        <div className="absolute w-88 h-88 rounded-full border border-dashed border-rose-500/20" />
         {/* HUD Crosshairs */}
-        <div className="absolute h-full w-[1px] bg-gradient-to-b from-transparent via-pink-500/20 to-transparent" />
-        <div className="absolute w-full h-[1px] bg-gradient-to-r from-transparent via-pink-500/20 to-transparent" />
+        <div className="absolute h-full w-[1px] bg-gradient-to-b from-transparent via-rose-500/25 to-transparent" />
+        <div className="absolute w-full h-[1px] bg-gradient-to-r from-transparent via-rose-500/25 to-transparent" />
       </div>
 
       <Suspense fallback={<DroneFallback />}>
@@ -352,8 +352,8 @@ export default function QuadcopterDrone() {
           {/* Lighting */}
           <ambientLight intensity={0.7} />
           <directionalLight position={[4, 5, 3]} intensity={1.5} color="#ffffff" />
-          <directionalLight position={[-4, -2, -2]} intensity={0.9} color="#ff2d8a" />
-          <pointLight position={[0, -2, 2]} intensity={1.2} color="#ff6fb1" />
+          <directionalLight position={[-4, -2, -2]} intensity={0.9} color="#c2325a" />
+          <pointLight position={[0, -2, 2]} intensity={1.2} color="#ff5a7a" />
 
           {/* Float wrapper for subtle natural levitation */}
           <Float
@@ -371,12 +371,12 @@ export default function QuadcopterDrone() {
       </Suspense>
 
       {/* Floating HUD telemetry badges */}
-      <div className="absolute bottom-3 left-4 sm:left-6 font-mono text-[11px] text-pink-400/70 bg-[#0d1326]/80 backdrop-blur-md px-3 py-1.5 rounded-md border border-pink-500/20 flex items-center gap-2 pointer-events-none">
-        <span className="w-1.5 h-1.5 rounded-full bg-[#ff2d8a] animate-ping" />
+      <div className="absolute bottom-3 left-4 sm:left-6 font-mono text-[11px] text-rose-300/80 bg-[#17080e]/85 backdrop-blur-md px-3.5 py-1.5 rounded-md border border-[#ff5a7a]/25 flex items-center gap-2 pointer-events-none shadow-[0_0_15px_rgba(255,90,122,0.15)]">
+        <span className="w-1.5 h-1.5 rounded-full bg-[#ff5a7a] animate-ping" />
         <span>MAVLINK // SYS_STATUS: ACTIVE</span>
       </div>
 
-      <div className="absolute top-4 right-4 sm:right-6 font-mono text-[10px] text-slate-400/80 bg-[#0d1326]/80 backdrop-blur-md px-2.5 py-1 rounded border border-white/5 pointer-events-none hidden sm:block">
+      <div className="absolute top-4 right-4 sm:right-6 font-mono text-[10px] text-rose-200/80 bg-[#17080e]/85 backdrop-blur-md px-2.5 py-1 rounded border border-[#ff5a7a]/20 pointer-events-none hidden sm:block">
         PX4 // 3D WIREFRAME SITL
       </div>
     </div>

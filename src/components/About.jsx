@@ -1,17 +1,16 @@
 import React, { useState } from 'react';
 import { motion } from 'framer-motion';
-import { Shield, Target, Cpu, Terminal, Binary, Radio, Layers, Activity } from 'lucide-react';
+import { Shield, Cpu, Terminal, Binary, Radio } from 'lucide-react';
 import { personalInfo, aboutData } from '../data';
-import CardTilt from './CardTilt';
 
-// Subtle Decorative Japanese Folding Fan SVG Accent (~180px, partly faded, non-intrusive)
+// Decorative Japanese Folding Fan SVG Accent (~190px, faded, rose/crimson palette)
 function FanAccent() {
   return (
     <div
       aria-hidden="true"
-      className="absolute -top-10 -right-4 sm:right-6 w-40 sm:w-48 h-28 pointer-events-none opacity-20 hover:opacity-30 transition-opacity drop-shadow-[0_0_15px_rgba(255,45,138,0.4)]"
+      className="absolute -top-10 -right-4 sm:right-6 w-44 sm:w-52 h-32 pointer-events-none opacity-25 hover:opacity-35 transition-opacity drop-shadow-[0_0_15px_rgba(255,90,122,0.4)]"
     >
-      <svg viewBox="0 0 200 120" className="w-full h-full stroke-[#ff6fb1] fill-none">
+      <svg viewBox="0 0 200 120" className="w-full h-full stroke-[#ff7895] fill-none">
         {/* Fan Ribs */}
         <path d="M100,115 L20,30" strokeWidth="1.2" strokeOpacity="0.7" />
         <path d="M100,115 L40,18" strokeWidth="1.2" strokeOpacity="0.7" />
@@ -25,8 +24,8 @@ function FanAccent() {
         {/* Fan Arc Blades */}
         <path
           d="M20,30 Q100,-8 180,30 L160,55 Q100,24 40,55 Z"
-          fill="url(#fanGrad)"
-          stroke="#ff2d8a"
+          fill="url(#fanGradRose)"
+          stroke="#ff5a7a"
           strokeWidth="1.2"
           opacity="0.85"
         />
@@ -35,14 +34,14 @@ function FanAccent() {
         <path d="M40,55 Q100,24 160,55" strokeWidth="1" strokeDasharray="3 2" strokeOpacity="0.6" />
 
         {/* Tassel handle ring */}
-        <circle cx="100" cy="115" r="4" fill="#ff2d8a" />
-        <path d="M100,119 L100,130" stroke="#ff4396" strokeWidth="1.5" />
+        <circle cx="100" cy="115" r="4" fill="#ff5a7a" />
+        <path d="M100,119 L100,130" stroke="#c2325a" strokeWidth="1.5" />
 
         <defs>
-          <linearGradient id="fanGrad" x1="0%" y1="0%" x2="100%" y2="0%">
-            <stop offset="0%" stopColor="#ff2d8a" stopOpacity="0.35" />
-            <stop offset="50%" stopColor="#ff6fb1" stopOpacity="0.5" />
-            <stop offset="100%" stopColor="#ff2d8a" stopOpacity="0.35" />
+          <linearGradient id="fanGradRose" x1="0%" y1="0%" x2="100%" y2="0%">
+            <stop offset="0%" stopColor="#ff5a7a" stopOpacity="0.35" />
+            <stop offset="50%" stopColor="#c2325a" stopOpacity="0.5" />
+            <stop offset="100%" stopColor="#ff5a7a" stopOpacity="0.35" />
           </linearGradient>
         </defs>
       </svg>
@@ -50,7 +49,7 @@ function FanAccent() {
   );
 }
 
-// Interactive Profile Card with subtle 3D tilt
+// Interactive Profile Card with subtle 3D tilt (larger size to fill space properly)
 function ProfileCard() {
   const [coords, setCoords] = useState({ x: 0, y: 0 });
 
@@ -69,20 +68,20 @@ function ProfileCard() {
     <div
       onMouseMove={handleMouseMove}
       onMouseLeave={handleMouseLeave}
-      className="relative group mx-auto max-w-[280px] sm:max-w-[310px]"
+      className="relative group mx-auto w-full max-w-[310px] sm:max-w-[380px] lg:max-w-[420px]"
     >
-      {/* Soft pink ambient glow behind profile picture */}
-      <div className="absolute -inset-3 bg-gradient-to-tr from-[#ff2d8a]/25 via-[#ff6fb1]/20 to-transparent rounded-3xl blur-xl opacity-75 group-hover:opacity-100 transition duration-500" />
+      {/* Soft rose ambient glow behind profile picture */}
+      <div className="absolute -inset-4 bg-gradient-to-tr from-[#ff5a7a]/30 via-[#c2325a]/25 to-transparent rounded-3xl blur-2xl opacity-75 group-hover:opacity-100 transition duration-500" />
 
       {/* Frame container */}
       <div
         style={{
-          transform: `perspective(800px) rotateY(${coords.x * 0.7}deg) rotateX(${-coords.y * 0.7}deg)`,
+          transform: `perspective(800px) rotateY(${coords.x * 0.6}deg) rotateX(${-coords.y * 0.6}deg)`,
           transition: 'transform 0.15s ease-out',
         }}
-        className="relative rounded-3xl p-[2px] bg-gradient-to-tr from-[#ff2d8a] via-[#ff6fb1]/50 to-white/10 shadow-[0_15px_35px_rgba(0,0,0,0.6)]"
+        className="relative rounded-3xl p-[2px] bg-gradient-to-tr from-[#ff5a7a] via-[#ff7895]/50 to-white/15 shadow-[0_20px_45px_rgba(0,0,0,0.7)]"
       >
-        <div className="relative rounded-[22px] overflow-hidden bg-[#0d1326] aspect-[4/5]">
+        <div className="relative rounded-[22px] overflow-hidden bg-[#17080e] aspect-[4/5]">
           <img
             src={personalInfo.profileImage}
             alt="Prisha Bansal"
@@ -90,16 +89,16 @@ function ProfileCard() {
             loading="eager"
           />
 
-          {/* Subtle navy/pink gradient blend tint overlay (keeps face clear and natural) */}
-          <div className="absolute inset-0 bg-gradient-to-t from-[#0a0f1f]/75 via-transparent to-[#ff2d8a]/5 pointer-events-none mix-blend-multiply" />
+          {/* Subtle maroon/rose blend tint overlay */}
+          <div className="absolute inset-0 bg-gradient-to-t from-[#12060a]/80 via-transparent to-[#ff5a7a]/5 pointer-events-none mix-blend-multiply" />
 
-          {/* Subtle tech watermark badge */}
-          <div className="absolute bottom-3 left-3 right-3 font-mono text-[11px] text-pink-300 bg-[#0d1326]/85 backdrop-blur-md px-3 py-1.5 rounded-lg border border-pink-500/30 flex items-center justify-between">
-            <span className="flex items-center gap-1.5">
-              <span className="w-2 h-2 rounded-full bg-[#ff2d8a]" />
-              STUDENT
+          {/* High-tech watermark badge */}
+          <div className="absolute bottom-3.5 left-3.5 right-3.5 font-mono text-xs text-[#f5dfe4] bg-[#17080e]/90 backdrop-blur-md px-3.5 py-2 rounded-xl border border-[#ff5a7a]/30 flex items-center justify-between shadow-lg">
+            <span className="flex items-center gap-2">
+              <span className="w-2.5 h-2.5 rounded-full bg-[#ff5a7a] shadow-[0_0_8px_#ff5a7a]" />
+              <span className="font-semibold tracking-wider">STUDENT</span>
             </span>
-            <span className="text-slate-400 text-[10px]">NFSU // 2026</span>
+            <span className="text-[#c9a5ae] text-xs">NFSU // 2026</span>
           </div>
         </div>
       </div>
@@ -111,26 +110,26 @@ export default function About() {
   const getGroupIcon = (category) => {
     switch (category) {
       case 'IoT & Embedded Security':
-        return <Radio className="w-4 h-4 text-[#ff2d8a]" />;
+        return <Radio className="w-5 h-5 text-[#ff5a7a]" />;
       case 'Autonomous Systems & Robotics':
-        return <Cpu className="w-4 h-4 text-[#ff6fb1]" />;
+        return <Cpu className="w-5 h-5 text-[#ff7895]" />;
       case 'Languages':
-        return <Binary className="w-4 h-4 text-pink-300" />;
+        return <Binary className="w-5 h-5 text-rose-200" />;
       case 'Security & Tools':
-        return <Shield className="w-4 h-4 text-[#ff4396]" />;
+        return <Shield className="w-5 h-5 text-[#c2325a]" />;
       default:
-        return <Terminal className="w-4 h-4 text-pink-400" />;
+        return <Terminal className="w-5 h-5 text-[#ff7895]" />;
     }
   };
 
   return (
-    <section id="about" className="relative py-24 sm:py-32 overflow-hidden border-t border-white/5">
-      {/* Subtle Fan Accent Graphic (~200px max, faded, never focal) */}
+    <section id="about" className="relative py-20 sm:py-24 overflow-hidden border-t border-[#ff5a7a]/15">
+      {/* Decorative Fan Accent Graphic */}
       <FanAccent />
 
-      <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
 
-        {/* Section Heading */}
+        {/* Section Heading (clamp(2.25rem, 4vw, 3.25rem)) */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -138,77 +137,81 @@ export default function About() {
           transition={{ duration: 0.6 }}
           className="mb-12 sm:mb-16"
         >
-          <h2 className="text-3xl sm:text-4xl font-mono font-bold text-white tracking-tight">
+          <h2
+            style={{ fontSize: 'clamp(2.25rem, 4vw, 3.25rem)' }}
+            className="font-mono font-bold text-[#f5dfe4] tracking-tight glow-rose"
+          >
             {aboutData.title}
           </h2>
-          <div className="h-0.5 w-16 bg-gradient-to-r from-[#ff2d8a] to-transparent mt-3" />
+          <div className="h-0.5 w-20 bg-gradient-to-r from-[#ff5a7a] to-transparent mt-3" />
         </motion.div>
 
-        {/* Profile + Bio & Stats Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-12 gap-8 md:gap-10 lg:gap-12 items-center mb-16">
+        {/* Profile + Bio Grid (wider and better filled) */}
+        <div className="grid grid-cols-1 md:grid-cols-12 gap-8 md:gap-12 items-center mb-16">
 
-          {/* Left: Profile Picture with 3D Tilt */}
+          {/* Left: Profile Picture (larger) */}
           <motion.div
             initial={{ opacity: 0, scale: 0.95 }}
             whileInView={{ opacity: 1, scale: 1 }}
             viewport={{ once: true }}
             transition={{ duration: 0.7 }}
-            className="md:col-span-5 lg:col-span-4 flex justify-center"
+            className="md:col-span-5 lg:col-span-5 flex justify-center"
           >
             <ProfileCard />
           </motion.div>
 
-          {/* Right: Bio Text and Stat Cards */}
+          {/* Right: Bio Text Card (larger padding and font) */}
           <motion.div
             initial={{ opacity: 0, y: 25 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.7, delay: 0.15 }}
-            className="md:col-span-7 lg:col-span-8 flex flex-col justify-center"
+            className="md:col-span-7 lg:col-span-7 flex flex-col justify-center"
           >
-            {/* Bio Paragraph */}
-            <div className="glass-panel rounded-2xl p-6 sm:p-8 border border-white/10 shadow-xl">
-              <p className="text-slate-300 text-base sm:text-lg leading-relaxed font-sans font-light">
+            <div className="glass-panel rounded-2xl p-7 sm:p-10 border border-[#ff5a7a]/20 shadow-2xl">
+              <p className="text-[#c9a5ae] text-[1.125rem] sm:text-[1.2rem] leading-[1.75] font-sans font-light">
                 {aboutData.bio}
               </p>
             </div>
           </motion.div>
         </div>
 
-        {/* Compact Skills Grid in Four Groups */}
+        {/* Skills Grid in Four Groups */}
         <motion.div
           initial={{ opacity: 0, y: 25 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.7 }}
         >
-          <div className="font-mono text-xs uppercase tracking-wider text-slate-400 mb-6 flex items-center gap-2">
-            <span className="text-[#ff2d8a]">//</span>
+          <div className="font-mono text-[0.95rem] uppercase tracking-wider text-[#9e7d86] mb-6 flex items-center gap-2">
+            <span className="text-[#ff5a7a] font-bold">//</span>
             <span>Technical Capabilities & Domain Matrix</span>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-5">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
             {aboutData.skillsGroups.map((group, idx) => (
               <div
                 key={idx}
-                className="glass-panel glass-panel-hover rounded-xl p-5 border border-white/10 flex flex-col h-full"
+                className="glass-panel glass-panel-hover rounded-2xl p-6 sm:p-7 border border-[#ff5a7a]/18 flex flex-col h-full shadow-lg"
               >
-                <div className="flex items-center gap-2.5 pb-3 mb-3.5 border-b border-white/5">
-                  <div className="p-1.5 rounded-lg bg-pink-500/10 border border-pink-500/20">
+                {/* Group Header (Card titles: 1.35rem) */}
+                <div className="flex items-center gap-3 pb-3.5 mb-4 border-b border-[#ff5a7a]/15">
+                  <div className="p-2 rounded-xl bg-[#ff5a7a]/10 border border-[#ff5a7a]/25 text-[#ff5a7a] shrink-0">
                     {getGroupIcon(group.category)}
                   </div>
-                  <h3 className="font-mono text-xs sm:text-sm font-semibold text-slate-200 tracking-tight">
+                  <h3 className="font-mono text-[1.35rem] font-semibold text-[#f5dfe4] tracking-tight leading-snug">
                     {group.category}
                   </h3>
                 </div>
 
-                <ul className="space-y-2 flex-1">
+                {/* Skills List (Tags/labels at least 0.9rem) */}
+                <ul className="space-y-2.5 flex-1">
                   {group.skills.map((skill, sIdx) => (
                     <li
                       key={sIdx}
-                      className="font-mono text-xs text-slate-300 flex items-start gap-2"
+                      className="font-mono text-[0.95rem] text-[#c9a5ae] flex items-start gap-2.5"
                     >
-                      <span className="text-[#ff2d8a] select-none text-[10px] mt-0.5">›</span>
+                      <span className="text-[#ff5a7a] select-none text-[1rem] mt-0.5 font-bold">›</span>
                       <span className="leading-snug">{skill}</span>
                     </li>
                   ))}

@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react';
 import Lenis from 'lenis';
 import ScrollProgressBar from './components/ScrollProgressBar';
-import SakuraPetals from './components/SakuraPetals';
+import AtmosphericBackground from './components/AtmosphericBackground';
 import Navbar from './components/Navbar';
 import Hero from './components/Hero';
 import About from './components/About';
@@ -41,18 +41,18 @@ export default function App() {
   }, []);
 
   return (
-    <div className="relative min-h-screen bg-[#0a0f1f] text-slate-200 bg-grid-pattern bg-radial-vignette selection:bg-[#ff2d8a]/30 selection:text-pink-100 overflow-x-hidden">
-      {/* Drifting cherry blossom petals across all pages in background */}
-      <SakuraPetals />
+    <div className="relative min-h-screen bg-[#12060a] text-[#c9a5ae] bg-grid-pattern bg-radial-vignette selection:bg-[#ff5a7a]/30 selection:text-rose-100 overflow-x-hidden font-sans">
+      {/* Fixed subtle atmospheric cloud layer across all sections behind content */}
+      <AtmosphericBackground />
 
-      {/* Thin pink scroll progress bar at the very top */}
+      {/* Thin rose scroll progress bar at the very top */}
       <ScrollProgressBar />
 
       {/* Floating Pill Navbar */}
       <Navbar />
 
       {/* Main Content Sections */}
-      <main id="main-content">
+      <main id="main-content" className="relative z-10">
         <Hero />
         <About />
         <Experience />
